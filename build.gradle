@@ -1,0 +1,32 @@
+plugins {
+  id 'java'
+  id 'com.diffplug.gradle.spotless' version '3.24.2'
+  id "com.github.johnrengelman.shadow" version "5.0.0"
+}
+
+spotless {
+  java {
+    googleJavaFormat()
+  }
+}
+
+repositories { mavenCentral() }
+
+sourceCompatibility = '1.8'
+
+configurations { compileOnly { extendsFrom annotationProcessor } }
+
+dependencies {
+
+  compileOnly 'org.projectlombok:lombok:1.18.12'
+  annotationProcessor 'org.projectlombok:lombok:1.18.12'
+  
+  implementation 'org.apache.commons:commons-lang3:3.9'
+}
+
+jar {
+  manifest {  attributes 'Main-Class': 'challenges.Application'  }
+}
+
+// run the shadowJar task at the end of build
+build.finalizedBy(shadowJar)
