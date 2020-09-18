@@ -22,6 +22,8 @@ dependencies {
   annotationProcessor 'org.projectlombok:lombok:1.18.12'
   
   implementation 'org.apache.commons:commons-lang3:3.9'
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+
 }
 
 jar {
